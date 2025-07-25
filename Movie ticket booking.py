@@ -1,15 +1,13 @@
-# Online Python compiler (interpreter) to run Python online.
-# Write Python 3 code in this online editor and run it.
-# Function to initialize seat matrix (5x5 for example)
+
 def initialize_seat_matrix():
-    return [['O' for _ in range(5)] for _ in range(5)]  # 'O' indicates the seat is available
+    return [['O' for _ in range(5)] for _ in range(5)]  
 
 # Function to display the seat matrix
 def display_seat_matrix(seats):
     print("\nCurrent seat availability (O = Available, X = Booked):")
     for row in seats:
         print(' '.join(row))
-    print()  # Empty line for better readability
+    print()  
 
 # Function to select seats and update seat matrix
 def select_seats(seats, num_tickets):
@@ -19,10 +17,10 @@ def select_seats(seats, num_tickets):
             row = int(input("Enter seat row (1-5): ")) - 1
             col = int(input("Enter seat column (1-5): ")) - 1
             if seats[row][col] == 'O':
-                seats[row][col] = 'X'  # Mark seat as booked
-                selected_seats.append((row + 1, col + 1))  # Save seat number for confirmation
+                seats[row][col] = 'X' 
+                selected_seats.append((row + 1, col + 1)) 
                 print(f"Seat ({row + 1}, {col + 1}) successfully booked.")
-                display_seat_matrix(seats)  # Show updated seat matrix after booking
+                display_seat_matrix(seats)  
             else:
                 print("Seat is already booked, please select another seat.")
                 continue
@@ -42,14 +40,14 @@ def t_movie():
     try:
         movie = int(input("Choose your movie (1-4): "))
         if movie == 4:
-            center()  # Go back to theater selection
+            center()  
         else:
-            theater()  # Proceed to theater selection
+            theater()  
     except ValueError:
         print("Invalid input, please choose a valid option.")
         t_movie()
 
-# Function to select a theater screen
+
 def theater():
     print("Which screen do you want to watch the movie on?")
     print("1. SCREEN 1")
@@ -95,9 +93,9 @@ def timing(screen, num_tickets):
             time_choice = input("Select your time (1-4): ")
             if time_choice in time_options[screen]:
                 print(f"Selected time: {time_options[screen][time_choice]}")
-                seats = initialize_seat_matrix()  # Initialize seat availability
-                display_seat_matrix(seats)  # Show available seats
-                selected_seats = select_seats(seats, num_tickets)  # Book seats
+                seats = initialize_seat_matrix()  
+                display_seat_matrix(seats) 
+                selected_seats = select_seats(seats, num_tickets)
                 print(f"Successfully booked seats: {selected_seats}")
                 print(f"Enjoy your movie at {time_options[screen][time_choice]}!")
             else:
@@ -115,7 +113,7 @@ def movie(theater_choice):
     if theater_choice in [1, 2, 3]:
         t_movie()
     elif theater_choice == 4:
-        city()  # Go back to city selection
+        city()
     else:
         print("Invalid choice.")
         center()
